@@ -6,6 +6,10 @@ use Illuminate\Http\Request;
 
 use App\Models\Message;
 
+use App\Models\User;
+
+
+
 class MessageController extends Controller
 {
     //
@@ -63,5 +67,12 @@ class MessageController extends Controller
         
         
         return $event;
+    }
+
+    public function getPersons()
+    {
+        $persons = User::latest()->get();
+
+        return $persons;
     }
 }

@@ -31,6 +31,8 @@ Route::group(['middleware' => ['auth:sanctum']], function(){
 
 Route::get('/fire_events', [MessageController::class, 'fire_events']);
 
+Route::get('/getPersons', [MessageController::class, 'getPersons']);
+
 Route::post('/register', [ApiAuthController::class, 'register']);
 
 Route::post('/login', [ApiAuthController::class, 'login']);
