@@ -23,9 +23,9 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::group(['middleware' => ['auth:sanctum']], function(){
 
-    Route::get('/messages', [MessageController::class, 'messages']);
+    Route::get('/get_messages', [MessageController::class, 'messages']);
 
-    Route::get('/create_message', [MessageController::class, 'create_message']);
+    Route::post('/send_message', [MessageController::class, 'send_message']);
 
 });
 

@@ -4,20 +4,44 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use App\Models\Message;
+
 class MessageController extends Controller
 {
     //
 
     public function messages()
     {
+        try {
+            
+            $messages = Message::with('sender')->get();
+
+            return $messages; 
+
+        } catch (\Throwable $th) {
+            //throw $th;
+
+            return $th;
+        }
         
-        
-        return $messages;
+        // return $messages;
     }
 
-    public function create_message(Request $request)
+    public function send_message(Request $request)
     {
-        
+
+        try {
+            //code...
+            $message = Message::create([
+                'sender_id' => $request->sender_id,
+                'message' => $request->message
+            ]);
+            
+        } catch (\Throwable $th) {
+            //throw $th;
+            return $th;
+        }
+
         
         
         return $message;
